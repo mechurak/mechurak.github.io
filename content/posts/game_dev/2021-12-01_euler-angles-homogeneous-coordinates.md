@@ -4,6 +4,7 @@ date: 2021-12-01T23:30:00+09:00
 summary: "Transformation matrix에 이동 정보도 같이 표현할 수 있습니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
+series_weight: 12
 # featuredImage: /images/lve/i12_cover.jpg
 tags:
 - vulkan

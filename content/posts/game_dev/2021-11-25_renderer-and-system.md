@@ -4,6 +4,7 @@ date: 2021-11-25T23:30:00+09:00
 summary: "Renderer와 SimpleRenderSystem을 별도의 클래스로 뽑아냅니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
+series_weight: 11
 # featuredImage: /images/lve/i11_cover.jpg
 tags:
 - vulkan

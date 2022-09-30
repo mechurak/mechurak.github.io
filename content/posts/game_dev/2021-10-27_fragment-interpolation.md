@@ -4,6 +4,7 @@ date: 2021-10-27T23:30:00+09:00
 summary: "vertex 에 색을 추가해서, 삼각형을 예쁘게 칠해 봅시다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
+series_weight: 7
 # featuredImage: /images/lve/i7_cover.jpg
 tags:
 - vulkan

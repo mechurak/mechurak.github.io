@@ -4,6 +4,7 @@ date: 2021-11-04T23:30:00+09:00
 summary: "윈도우 사이즈가 바뀌면 Swap Chain도 다시 만들어야 합니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
+series_weight: 8
 # featuredImage: /images/lve/i8_cover.jpg
 tags:
 - vulkan

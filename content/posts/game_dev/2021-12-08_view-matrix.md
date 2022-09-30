@@ -4,6 +4,7 @@ date: 2021-12-08T23:30:00+09:00
 summary: "View matrix를 통해 카메라의 위치와 방향을 결정합니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
+series_weight: 14
 # featuredImage: /images/lve/i14_cover.jpg
 tags:
 - vulkan
