@@ -1,0 +1,108 @@
+# 'Game loops & User input - Vulkan Game Engine Tutorial 15' 정리
+
+
+LittleVulkanEngine 을 따라 만들어 보면서, Vulkan을 배워봅시다.
+
+
+![cover](/images/lve/i15_cover.jpg)
+[Youtube Link](https://youtu.be/wFV9zPU_Cjg?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR)
+
+<br/>
+
+---
+
+
+## 1. 주요내용
+
+- delta time 도 같이 이용해서, 매 틱마다 GameObject를 업데이트 함
+- 키보드 입력을 받아서 카메라를 움직임
+
+<br/>
+
+---
+
+## 2. 이론 설명
+
+### 2.1. 게임 속도 문제
+게임 속도가 실행되는 기기마다 다르면 안됩니다.
+요 속도를 맞추기 위해, FIFO present 모드(V-Sync 를 따름)를 사용하지만, 완전한 해결책은 아닙니다.
+
+모니터의 refresh rate 가 다르면, 속도가 달라질 것이기 때문입니다.
+
+[49s](https://youtu.be/wFV9zPU_Cjg?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&t=49)
+![i15_speed.webp](/images/lve/i15_speed.webp)
+모니터가 60Hz이면 game loop 가 60번 불릴 것이고, 120Hz라면 120번 불릴겁니다.  
+매 틱마다 같은 각도를 회전한다면, 120Hz 가 두 배 더 빨리 돌게 되지요.
+
+<br/>
+
+---
+
+### 2.2. delta time 도입
+
+
+[115s](https://youtu.be/wFV9zPU_Cjg?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&t=115)
+![i15_dt.webp](/images/lve/i15_dt.webp)
+update 를 부를 때, 이전 프레임 시작에서 부터 얼마만큼의 시간이 지났는지를 나타내는 `dt`를 같이 넘깁니다.
+요 delta time 을 이용하면, 게임 속도 문제를 해결할 수 있습니다.
+
+<br/>
+
+[135s](https://youtu.be/wFV9zPU_Cjg?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&t=135)
+![i15_dt2.webp](/images/lve/i15_dt2.webp)
+불리는 횟수가 다르더라도, `dt` 값이 있으므로 보정이 가능하죠.
+
+<br/>
+
+### 2.3. 로테이션이 0이 아닌 것 확인
+회전 값이 0이라면, 굳이 회전 값을 갱신할 필요가 없습니다.  
+내적 이용하면, 벡터가 0이 아님을 확인 할 수 있습니다.
+
+[617s](https://youtu.be/wFV9zPU_Cjg?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&t=617)
+![i15_dot.webp](/images/lve/i15_dot.webp)
+
+<br/>
+
+### 2.4. 전방 확인
+xz평면에서 움직을 거니까, y축 회전 기준으로 전방을 정합니다.
+
+[726s](https://youtu.be/wFV9zPU_Cjg?list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&t=726)
+![i15_forward.webp](/images/lve/i15_forward.webp)
+
+<br/>
+
+---
+
+## 3. 코드 수정
+
+### 3.1. SimpleRenderSystem::renderGameObjects() 수정
+- 회전 애니메이션을 위해 넣어던 회전 값 변화 제거
+
+<br/>
+
+### 3.2. FirstApp:run() 수정
+- 매 틱마다 현재 시각 확인 및 지난 틱의 시각과의 차(dt)를 유지
+- 루프 진입하기 전에 KeyboardMovementController 준비 (cameraController)
+- 루프 진입하기 전에 카메라의 이동 및 회전을 위한 GameObject 준비 (viewObject)
+- 루프 안에서 KeyboardMovementController.moveInPlaneXZ 호출 (viewObject 회전 및 이동)
+- 루프 안에서 viewObject 값을 이용해 카메라 세팅
+
+<br/>
+
+### 3.3. KeyboardMovementController 클래스 추가
+- 키보드 입력 확인해서 viewObject에 이동 및 회전 세팅
+- 계산할 때, dt를 같이 곱해줌으로써 게임 속도가 동일하도록 함
+
+<br/>
+
+### 3.4. LveWindow 클래스 수정
+- getGLFWwindow() 메소드 추가 : KeyboardMovementController 에서 GLFW의 window 받아서 키보드 입력을 확인하기 위함
+
+<br/>
+
+### 3.5. 클래스 다이어그램
+![i15_diagram.jpg](/images/lve/i15_diagram.jpg)
+
+<br/>
+
+---

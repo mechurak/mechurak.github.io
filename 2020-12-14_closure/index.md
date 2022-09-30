@@ -1,0 +1,188 @@
+# 'Better way 21. 변수 영역과 클로저의 상호작용 방식을 이해하라' 정리
+
+
+## 들어가며
+
+[Effective Python 2nd 파이썬 코딩의 기술 (교보문고 링크)](http://digital.kyobobook.co.kr/digital/ebook/ebookDetail.ink?selectedLargeCategory=001&barcode=4801165213191&orderClick=LEH&Kc=)을 제대로 이해하고자 블로그에 정리합니다.
+
+{{< figure src="http://image.kyobobook.co.kr/images/book/xlarge/191/x4801165213191.jpg" width="180px" >}}
+
+<br/>
+<br/>
+
+**현재 위치**
+{{< admonition note >}}
+<3. Functions>  
+Item 21: Know How Closures Interact with Variable Scope  
+**Better Way 21. 변수 영역과 클로저의 상호작용 방식을 이해하라**
+{{< /admonition >}}
+
+
+<br/>
+
+---
+
+
+## 한 줄 요약 및 첨언
+
+함수 안에 함수를 정의할 수 있습니다. 이 내부 함수(?)를 클로저라고 부르는데, 클로저는 자신이 정의된 영역 밖의 변수를 참조할 수 있습니다.  
+요 클로저 안에서 외부 변수에 대입은 불가능합니다. `nonlocal` 키워드로 가능하게 할 수 있지만, 사용하지 않는 게 좋을 것 같습니다.
+
+<br/>
+
+---
+
+## 사용 예시
+
+numbers 를 정렬하는데, group 안에 있는 녀석들은 더 앞에 두고 싶은 상황
+
+```python
+# Example 1
+def sort_priority(values, group):
+    def helper(x): # 클로저(자신이 정의된 영역 밖의 변수 참조 가능)라서 group 참조 가능
+        if x in group:
+            return (0, x)  # 튜플을 리턴하면, 앞의 인덱스 (0 or 1) 기준으로 먼저 정렬됨
+        return (1, x)
+
+    values.sort(key=helper) 
+
+
+# Example 2
+numbers = [8, 3, 1, 2, 5, 4, 7, 6]
+group = {2, 3, 5, 7}
+sort_priority(numbers, group)
+print(numbers)  # [2, 3, 5, 7, 1, 4, 6, 8]
+```
+
+
+<br/>
+
+---
+
+## 기억해야 할 내용
+
+책에서 챕터 마지막 부분에 적혀있는 내용입니다.
+
+{{< admonition tip >}}
+Closure functions can refer to variables from any of the scopes in which they were defined.  
+**클로저 함수는 자신이 정의된 영역 외부에서 정의된 변수도 참조할 수 있다.**
+{{< /admonition >}}
+
+{{< admonition tip >}}
+By default, closures can't affect enclosing scopes by assigning variables.  
+**기본적으로 클로저 내부에 사용한 대입문은 클로저를 감싸는 영역에 영향을 끼칠 수 없다.**
+{{< /admonition >}}
+
+{{< admonition tip >}}
+Use the `nonlocal` statement to indicate when a closure can modify a variable in its enclosing scopes.  
+**클로저가 자신을 감싸는 영역의 변수를 변경한다는 사실을 표시할 때는 nonlocal 문을 사용하라.**
+{{< /admonition >}}
+
+{{< admonition tip >}}
+Avoid using `nonlocal` statements for anything beyond simple functions.  
+**간단한 함수가 아닌 경우에는 nonlocal 문을 사용하지 말라.**
+{{< /admonition >}}
+
+<br/>
+
+---
+
+## 상세 설명
+
+위 예제에서, group 에 해당하는 원소가 있었는지를 알고 싶은 상황.  
+하지만 클로저 안에서 외부 scope 의 값을 변경할 수는 없습니다.
+
+```python
+# Example 6
+def sort_priority2(numbers, group):
+    found = False  # Scope: 'sort_priority2'
+
+    def helper(x):
+        if x in group:
+            found = True  # Scope: 'helper' -- Bad!  (클로저 내부 변수는, 외부 scope 에 영향 주지 못함)
+            return (0, x)
+        return (1, x)
+
+    numbers.sort(key=helper)
+    return found
+
+
+# Example 4
+numbers = [8, 3, 1, 2, 5, 4, 7, 6]
+group = {2, 3, 5, 7}
+found = sort_priority2(numbers, group)
+print('Found:', found)  # Found: False (True를 기대했지만, False임)
+print(numbers)  # [2, 3, 5, 7, 1, 4, 6, 8]
+```
+
+<br/>
+<br/>
+
+꼭 하고 싶다면, nonlocal문을 통해서, 해당 변수가 클로저 외부에 있다는 것을 명시해 줄 수 있습니다.  
+하지만 가독성이 떨어질 수 있어서, 웬만하면 사용 안하는 것이 좋을 것 같습니다.
+
+```python
+# Example 7
+def sort_priority3(numbers, group):
+    found = False
+
+    def helper(x):
+        nonlocal found  # Added
+        if x in group:
+            found = True
+            return (0, x)
+        return (1, x)
+
+    numbers.sort(key=helper)
+    return found
+
+
+# Example 4
+numbers = [8, 3, 1, 2, 5, 4, 7, 6]
+group = {2, 3, 5, 7}
+found = sort_priority3(numbers, group)
+print('Found:', found)  # Found: True
+print(numbers)  # [2, 3, 5, 7, 1, 4, 6, 8]
+```
+
+<br/>
+<br/>
+
+위 상황을 해결하는 바람직한 접근은, 상태를 관리하는 클래스를 따로 만드는 것입니다.
+
+```python
+# Example 9
+class Sorter:
+    def __init__(self, group):
+        self.group = group
+        self.found = False
+
+    def __call__(self, x):  # Better Way 38
+        if x in self.group:
+            self.found = True
+            return (0, x)
+        return (1, x)
+
+
+numbers = [8, 3, 1, 2, 5, 4, 7, 6]
+group = {2, 3, 5, 7}
+sorter = Sorter(group)
+numbers.sort(key=sorter)
+assert sorter.found is True
+assert numbers == [2, 3, 5, 7, 1, 4, 6, 8]
+```
+
+<br/>
+
+---
+
+
+## 참고 자료
+
+- [파이썬 코딩의 기술 (교보문고 링크)](http://digital.kyobobook.co.kr/digital/ebook/ebookDetail.ink?selectedLargeCategory=001&barcode=4801165213191&orderClick=LEH&Kc=)
+- [길벗출판사 깃허브](https://github.com/gilbutITbook/080235/blob/master/Chapter3/Better%20way21.py)
+- [원저자 깃허브](https://github.com/bslatkin/effectivepython/blob/master/example_code/item_21.py)
+
+<br/>
+
+---

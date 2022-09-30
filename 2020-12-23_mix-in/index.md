@@ -1,0 +1,240 @@
+# 'Better way 41. 기능을 합성할 때는 믹스인 클래스를 사용하라' 정리
+
+
+## 0. 들어가며
+
+[Effective Python 2nd 파이썬 코딩의 기술 (교보문고 링크)](http://digital.kyobobook.co.kr/digital/ebook/ebookDetail.ink?selectedLargeCategory=001&barcode=4801165213191&orderClick=LEH&Kc=)을 제대로 이해하고자 블로그에 정리합니다.
+
+{{< figure src="http://image.kyobobook.co.kr/images/book/xlarge/191/x4801165213191.jpg" width="180px" >}}
+
+<br/>
+<br/>
+
+**현재 위치**
+{{< admonition note >}}
+<5. Classes and Interfaces>  
+Item 41: Consider Composing Functionality with Mix-in Classes  
+**Better way 41. 기능을 합성할 때는 믹스인 클래스를 사용하라**
+{{< /admonition >}}
+
+
+<br/>
+
+---
+
+## 1. 한 줄 요약 및 첨언
+
+믹스인 클래스도 뭔지는 알아둡시다.  
+따로 애트리뷰트는 없고 하위 클래스에서 공통으로 사용할 기능만 정의한 클래스를 믹스인 클래스라고 하는 듯 합니다.
+
+
+<br/>
+
+---
+
+## 2. 사용 예시
+
+바이너리 트리가 ToDictMixin 을 상속받은 예제입니다.
+
+
+```python
+import pprint
+
+
+# Example 1
+class ToDictMixin:
+    def to_dict(self):  # 믹스인을 상속하는 모든 클래스에서 이 함수의 기능을 사용할 수 있음
+        return self._traverse_dict(self.__dict__)  # __dict__ : 인스턴스가 갖는 애트리뷰트들의 dict 
+
+    # Example 2
+    def _traverse_dict(self, instance_dict):
+        output = {}
+        for key, value in instance_dict.items():
+            output[key] = self._traverse(key, value)
+        return output
+
+    def _traverse(self, key, value):
+        if isinstance(value, ToDictMixin):
+            return value.to_dict()
+        elif isinstance(value, dict):
+            return self._traverse_dict(value)
+        elif isinstance(value, list):
+            return [self._traverse(key, i) for i in value]
+        elif hasattr(value, '__dict__'):
+            return self._traverse_dict(value.__dict__)
+        else:
+            return value
+
+
+# Example 3
+class BinaryTree(ToDictMixin):
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+# 이해를 돕기 위해
+temp_node1 = BinaryTree(5, None, None)
+print(temp_node1.__dict__)  # {'value': 5, 'left': None, 'right': None}
+# 이해를 돕기 위해
+temp_node2 = BinaryTree(3, temp_node1, None)
+print(temp_node2.__dict__)  # {'value': 3, 'left': <__main__.BinaryTree object at 0x000002A5DA1D9730>, 'right': None}
+
+
+# Example 4
+tree = BinaryTree(10,
+                  left=BinaryTree(7, right=BinaryTree(9)),
+                  right=BinaryTree(13, left=BinaryTree(11)))
+pprint.pprint(tree.to_dict())
+```
+
+```output.txt
+{'left': {'left': None,
+          'right': {'left': None, 'right': None, 'value': 9},
+          'value': 7},
+ 'right': {'left': {'left': None, 'right': None, 'value': 11},
+           'right': None,
+           'value': 13},
+ 'value': 10}
+```
+
+<br/>
+
+---
+
+## 3. 기억해야 할 내용
+
+책에서 챕터 마지막 부분에 적혀있는 내용입니다.
+
+{{< admonition tip >}}
+Avoid using multiple inheritance with instance attributes and `__init__` if mix-in classes can achieve the same outcome.  
+**믹스인을 사용해 구현할 수 있는 기능을 인스턴스 애트리뷰트와 `__init__`을 사용하는 다중 상속을 통해 구현하지 말라.**
+{{< /admonition >}}
+
+{{< admonition tip >}}
+Use pluggable behaviors at the instance level to provide per-class customization when mix-in classes may require it.  
+**믹스인 클래스가 클래스별로 특화된 기능을 필요로 한다면 인스턴스 수준에서 끼워 넣을 수 있는 기능(정해진 메서드를 통해 해당 기능을 인스턴스가 제공하게 만듦)을 활용하라.**
+{{< /admonition >}}
+
+{{< admonition tip >}}
+Mix-ins can include instance methods or class methods, depending on your needs.  
+**믹스인에는 필요에 따라 인스턴스 메서드는 물론 클래스 메서드도 포함될 수 있다.**
+{{< /admonition >}}
+
+{{< admonition tip >}}
+Compose mix-ins to create complex functionality from simple behaviors.  
+**믹스인을 합성하면 단순한 동작으로부터 더 복잡한 기능을 만들어낼 수 있다.**
+{{< /admonition >}}
+
+
+<br/>
+
+---
+
+## 4. 더 알아보기
+
+### 4.1 믹스인 여러 개 합성
+
+위의 ToDictMixin 과 JsonMixin 같이 사용
+
+```python
+import pprint
+import json
+
+
+# Example 1
+class ToDictMixin:
+    def to_dict(self):  # 믹스인을 상속하는 모든 클래스에서 이 함수의 기능을 사용할 수 있음
+        return self._traverse_dict(self.__dict__)  # __dict__ : 인스턴스가 갖는 애트리뷰트들의 dict
+
+    # Example 2
+    def _traverse_dict(self, instance_dict):
+        output = {}
+        for key, value in instance_dict.items():
+            output[key] = self._traverse(key, value)
+        return output
+
+    def _traverse(self, key, value):
+        if isinstance(value, ToDictMixin):
+            return value.to_dict()
+        elif isinstance(value, dict):
+            return self._traverse_dict(value)
+        elif isinstance(value, list):
+            return [self._traverse(key, i) for i in value]
+        elif hasattr(value, '__dict__'):
+            return self._traverse_dict(value.__dict__)
+        else:
+            return value
+
+
+# Example 9
+class JsonMixin:
+    @classmethod
+    def from_json(cls, data):
+        kwargs = json.loads(data)
+        return cls(**kwargs)  #
+
+    def to_json(self):
+        return json.dumps(self.to_dict())
+
+
+# Example 10
+class DatacenterRack(ToDictMixin, JsonMixin):
+    def __init__(self, switch=None, machines=None):
+        self.switch = Switch(**switch)
+        self.machines = [
+            Machine(**kwargs) for kwargs in machines]
+
+
+class Switch(ToDictMixin, JsonMixin):
+    def __init__(self, ports=None, speed=None):
+        self.ports = ports
+        self.speed = speed
+
+
+class Machine(ToDictMixin, JsonMixin):
+    def __init__(self, cores=None, ram=None, disk=None):
+        self.cores = cores
+        self.ram = ram
+        self.disk = disk
+
+
+# Example 11
+serialized = """{
+    "switch": {"ports": 5, "speed": 1e9},
+    "machines": [
+        {"cores": 8, "ram": 32e9, "disk": 5e12},
+        {"cores": 4, "ram": 16e9, "disk": 1e12},
+        {"cores": 2, "ram": 4e9, "disk": 500e9}
+    ]
+}"""
+
+deserialized = DatacenterRack.from_json(serialized)
+print(deserialized)  #  <__main__.DatacenterRack object at 0x000002DDB65691F0>
+pprint.pprint(deserialized.to_dict())
+roundtrip = deserialized.to_json()
+assert json.loads(serialized) == json.loads(roundtrip)
+```
+
+실행 결과
+
+```output.txt
+{'machines': [{'cores': 8, 'disk': 5000000000000.0, 'ram': 32000000000.0},
+              {'cores': 4, 'disk': 1000000000000.0, 'ram': 16000000000.0},
+              {'cores': 2, 'disk': 500000000000.0, 'ram': 4000000000.0}],
+ 'switch': {'ports': 5, 'speed': 1000000000.0}}
+```
+
+<br/>
+
+---
+
+## 10. 참고 자료
+
+- [파이썬 코딩의 기술 (교보문고 링크)](http://digital.kyobobook.co.kr/digital/ebook/ebookDetail.ink?selectedLargeCategory=001&barcode=4801165213191&orderClick=LEH&Kc=)
+- [원저자 깃허브](https://github.com/bslatkin/effectivepython/blob/master/example_code/item_40.py)
+
+<br/>
+
+---

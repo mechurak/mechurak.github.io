@@ -1,0 +1,55 @@
+# Android Studio 프로젝트에 ktlint 적용
+
+
+![https://cloud.githubusercontent.com/assets/370176/26518284/38b680da-4262-11e7-8d27-2b9e849fb55f.png](https://cloud.githubusercontent.com/assets/370176/26518284/38b680da-4262-11e7-8d27-2b9e849fb55f.png)
+
+Android Studio 에서 코드를 작성하다 보면  
+습관적으로 Reformat Code (`Ctrl`+`Alt`+`L`) 기능을 통해 코드 정리를 하게 됩니다.
+
+기본 세팅 상태도 훌륭하기는 하지만,  
+협업 상황을 고려한다면 좀 더 strict하고 일관성 있게 제한하는 게 좋습니다.
+
+이를 위해서 ktlint를 적용해 봅시다.
+
+**ktlint 파일을 다운**로드 받아서 **커맨드를 실행**해주면, 해당 프로젝트의 .**idea 밑의 설정 파일들을 수정해 줍**니다.
+
+<br/>
+
+---
+
+## 프로젝트에 ktlint 설정 방법
+
+1. ktlint 다운로드
+  - [https://github.com/pinterest/ktlint/releases](https://github.com/pinterest/ktlint/releases) 에서 `ktlint` 파일 다운로드
+2. 프로젝트 루트 폴더에서 ktlint 커맨드 실행
+
+```bash
+# 윈도우
+$ java -jar [다운받은 ktlint 파일 경로] --android applyToIDEAProject
+```
+
+```bash
+# 필자의 경우 (Windows Terminal)
+
+$ pwd  # 프로젝트 루트 폴더로 이동
+C:\workspace_android\ellas-notes
+
+$ ls ../ktlint  # ktlint 는 상위 폴더에 저장해 두었음
+-a----      2021-08-19   오후 5:25       55496103 ktlint
+
+# java path가 따로 안 잡혀 있는 관계로 java도 경로까지 써서
+$ "C:\Program Files\android-studio\jre\bin\java" -jar ..\ktlint --android applyToIDEAProject
+```
+
+<br/>
+
+---
+
+## Reference
+
+- [https://github.com/pinterest/ktlint#-with-intellij-idea](https://github.com/pinterest/ktlint#-with-intellij-idea)
+
+<br/>
+
+---
+
