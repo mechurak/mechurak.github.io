@@ -72,18 +72,18 @@ print(result[:10])  # [0, 5, 11, 15, 21, 27]
 책에서 챕터 마지막 부분에 적혀있는 내용입니다.
 
 {{< admonition tip >}}
-> Using generators can be clearer than the alternative of having a function return a `list` of accumulated results.  
-> **제너레이터를 사용하면 결과를 리스트에 합쳐서 반환하는 것보다 더 깔끔하다.**
+Using generators can be clearer than the alternative of having a function return a `list` of accumulated results.  
+**제너레이터를 사용하면 결과를 리스트에 합쳐서 반환하는 것보다 더 깔끔하다.**
 {{< /admonition >}}
 
 {{< admonition tip >}}
-> The iterator returned by a generator produces the set of values passed to `yield` expressions within the generator function's body.  
-> **제너레이터가 반환하는 이터레이터는 제너레이터 함수의 본문에서 yield가 반환하는 값들로 이뤄진 집합을 만들어낸다.**
+The iterator returned by a generator produces the set of values passed to `yield` expressions within the generator function's body.  
+**제너레이터가 반환하는 이터레이터는 제너레이터 함수의 본문에서 yield가 반환하는 값들로 이뤄진 집합을 만들어낸다.**
 {{< /admonition >}}
 
 {{< admonition tip >}}
-> Generators can produce a sequence of outputs for arbitrarily large inputs because their working memory doesn't include all inputs and outputs.  
-> **제너레이터를 사용하면 작업 메모리에 모든 입력과 출력을 저장할 필요가 없으므로 입력이 아주 커도 출력 시퀀스를 만들 수 있다.**
+Generators can produce a sequence of outputs for arbitrarily large inputs because their working memory doesn't include all inputs and outputs.  
+**제너레이터를 사용하면 작업 메모리에 모든 입력과 출력을 저장할 필요가 없으므로 입력이 아주 커도 출력 시퀀스를 만들 수 있다.**
 {{< /admonition >}}
 
 <br/>
