@@ -2,7 +2,7 @@
 title: "Colab에서 Google Drive 연결 및 custom module 사용"
 date: 2022-07-18T23:00:00+09:00
 summary: "Google Drive에 있는 custom module을 Colab에서 import 해보자"
-categories: [ ml ]
+categories: [ Machine Learning ]
 # featuredImage: /images/logo/ml.jpg
 tags:
 - colab

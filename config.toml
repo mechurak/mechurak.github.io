@@ -12,9 +12,9 @@ theme = "DoIt"
   #  DoIt theme version
   version = "0.2.X"
   # website title
-  title = "My New Hugo Site"
+  title = "일편단씸의 블로그"
   # site description
-  description = "This is My New Hugo Site"
+  description = "할 수 있다! 알고 개발, 알고 투자"
   # site keywords
   keywords = ["Theme", "Hugo"]
   #  site default theme ("light", "dark", "black", "auto")
@@ -85,7 +85,7 @@ theme = "DoIt"
     mobileMode = "auto"
     #  Theme change mode
     # theme change mode ("switch", "select")
-    themeChangeMode = "switch"
+    themeChangeMode = "select"
     #  Header title config
     [params.header.title]
       # URL of the LOGO
@@ -114,7 +114,7 @@ theme = "DoIt"
     #  whether to show the author
     author = true
     # Site creation time
-    since = 2019
+    since = 2020
     # ICP info only in China (HTML format is supported)
     icp = ""
     # license info (HTML format is supported)
@@ -318,7 +318,7 @@ theme = "DoIt"
       # whether to show the copy button of the code block
       copy = true
       # the maximum number of lines of displayed code by default
-      maxShownLines = 20
+      maxShownLines = 30
     #  Table config
     [params.page.table]
       # whether to enable sorting in the tables
