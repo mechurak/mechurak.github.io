@@ -4,7 +4,7 @@ date: 2021-12-06T23:30:00+09:00
 summary: "Projection matrix를 통해 어떤 유형의 카메라를 이용할지 결정합니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
-series_weight: 13
+series_weight: 15
 # featuredImage: /images/lve/i13_cover.jpg
 tags:
 - vulkan

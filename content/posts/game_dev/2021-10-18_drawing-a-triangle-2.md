@@ -4,7 +4,7 @@ date: 2021-10-18T23:30:00+09:00
 summary: "command buffer 에 대해 알아보고, 드디어 삼각형 하나를 그립니다!"
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
-series_weight: 5
+series_weight: 7
 # featuredImage: /images/lve/i5-2_cover.jpg
 tags:
 - vulkan

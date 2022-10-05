@@ -4,7 +4,7 @@ date: 2021-11-22T23:30:00+09:00
 summary: "transformation matrix를 이용해, scale과 rotation을 적용해 봅시다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
-series_weight: 10
+series_weight: 12
 # featuredImage: /images/lve/i10_cover.jpg
 tags:
 - vulkan

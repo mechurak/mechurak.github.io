@@ -4,7 +4,7 @@ date: 2021-10-26T23:30:00+09:00
 summary: "vertex buffer에 대해 알아보고, LveModel 클래스를 만듭니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
-series_weight: 6
+series_weight: 8
 # featuredImage: /images/lve/i6_cover.jpg
 tags:
 - vulkan

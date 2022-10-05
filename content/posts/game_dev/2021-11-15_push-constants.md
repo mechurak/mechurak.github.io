@@ -4,7 +4,7 @@ date: 2021-11-15T23:30:00+09:00
 summary: "Push Costants를 이용해서 작은 상수 값을 쉐이더에 전달할 수 있습니다."
 categories: [ 게임 개발 ]
 series: [ Vulkan Game Engine Tutorial 정리 ]
-series_weight: 9
+series_weight: 11
 # featuredImage: /images/lve/i9_cover.jpg
 tags:
 - vulkan
