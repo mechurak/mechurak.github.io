@@ -6,6 +6,7 @@ categories: [ flutter ]
 # featuredImage: /images/logo/dart.svg
 tags:
 - dart
+- flutter
 ---
 
 `Dart` 에는 cascade notation(`..`, `?..`) 이란게 있음. (점 두개)  

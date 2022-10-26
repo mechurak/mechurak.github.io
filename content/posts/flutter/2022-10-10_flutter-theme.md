@@ -3,7 +3,7 @@ title: "flutter에서 theme 사용 및 TextStyle, Color 관리"
 date: 2022-10-10T23:00:00+09:00
 categories: [ flutter ]
 tags:
-- dart
+- flutter
 ---
 
 `Color`, `TextStyle`을 앱 전체에서 일관되게 적용을 위해 `Theme`을 사용하자.  

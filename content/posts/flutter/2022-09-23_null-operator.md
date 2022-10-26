@@ -6,6 +6,7 @@ categories: [ flutter ]
 # featuredImage: /images/logo/dart.svg
 tags:
 - dart
+- flutter
 ---
 
 - `??` 연산자('null operator' 라고 부르나 봄)는 왼쪽 표현식이 null이 아니면 그걸 취하고, null 이면 오른쪽 표현식을 취함.  
