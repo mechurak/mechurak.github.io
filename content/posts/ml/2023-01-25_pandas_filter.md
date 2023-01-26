@@ -1,5 +1,5 @@
 ---
-title: "pandas dataframe 응용: 필터링 - boolean indexing 과 isin() 메소드"
+title: "Pandas DataFrame 필터링 - boolean indexing 과 isin() 메소드"
 date: 2023-01-25T23:00:00+09:00
 categories: [ Machine Learning ]
 tags:
