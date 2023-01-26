@@ -1,4 +1,4 @@
-# pandas dataframe 응용: 필터링 - boolean indexing 과 isin() 메소드
+# Pandas DataFrame 필터링 - boolean indexing 과 isin() 메소드
 
 
 특정 조건에 해당하는 행들만 필터링 하는 것을 `boolean indexing` 이라고 한다. `isin()` 메소드도 유용하다.
