@@ -56,7 +56,7 @@ SQL에서 테이블 조인하는 느낌이다.
 
 ## Reference
 - [{책} 파이썬 머신러닝 판다스 데이터 분석 / 오승환 - 6.4 데이터프레임 합치기](https://product.kyobobook.co.kr/detail/S000000833232)
-- [{pandas User Guide} 10minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#merge)
+- [{Pandas User Guide} 10minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#merge)
 
 <br/>
 
