@@ -34,7 +34,7 @@ and(`&`)를 이용해 mask 를 준비한 경우와 `isin()`을 사용하는 경�
 
 ## Reference
 - [{책} 파이썬 머신러닝 판다스 데이터 분석 / 오승환 - 6.3 필터링](https://product.kyobobook.co.kr/detail/S000000833232)
-- [{pandas User Guide} 10minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#boolean-indexing)
+- [{Pandas User Guide} 10minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#boolean-indexing)
 
 <br/>
 
