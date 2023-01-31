@@ -45,7 +45,7 @@ df.groupby(['class', 'sex']).mean().reset_index()
 
 <br/>
 
-{{< pybook pandas_practice_group2 1750 >}}
+{{< pybook pandas_practice_group2 1800 >}}
 
 ---
 
