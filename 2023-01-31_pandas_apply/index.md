@@ -8,7 +8,8 @@ DataFrame의 열 혹은 행에 특정 함수를 적용하고 싶을때는 `apply
 
 
 ## 1. 핵심 요약
-`DataFrame.apply()` 를 이용해, 열별 혹은 행별로 함수를 적용할 수 있다.  
+`DataFrame.apply()` 를 이용해, 열별 혹은 행별로 함수를 적용할 수 있다. 
+ 
 
 <br/>
 
