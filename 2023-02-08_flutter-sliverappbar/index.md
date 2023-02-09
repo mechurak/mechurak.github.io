@@ -1,4 +1,4 @@
-# SliverAppBar로 AppBar도 같이 스크롤
+# Flutter, SliverAppBar로 AppBar도 같이 스크롤
 
 
 AppBar 를 화면 위에 고정시켜두면 뭔가 화면을 비효율적으로 쓰는 느낌이다. 이미 많은 앱들이 AppBar 도 같이 스크롤 되게 동작하고 있었다. Flutter에는 이러한 동작을 위해 `CustomScrollView`, `SliverAppBar` 가 준비되어 있다.
