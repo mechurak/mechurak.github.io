@@ -1,5 +1,5 @@
 ---
-title: "SliverAppBar로 AppBar도 같이 스크롤"
+title: "Flutter, SliverAppBar로 AppBar도 같이 스크롤"
 date: 2023-02-08T23:30:00+09:00
 categories: [ flutter ]
 tags:
