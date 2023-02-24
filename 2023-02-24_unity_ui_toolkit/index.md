@@ -81,12 +81,12 @@ Unity의 새로운 UI 시스템인 UI Toolkit을 알아보자
 
 <br/>
 
-해당 파일을 더블 클릭하면 `UI Builder` 윈도우가 열린다.
+해당 파일을 더블 클릭하면 `UI Builder` 윈도우가 열린다. 인터페이스는 아래와 같다.
 
 {{< image src="https://docs.unity3d.com/uploads/Main/UIBuilder/UIBuilderAnnotatedMainWindow.png" caption="이미지 출처: [{Unity Docs} UI builder - Interface overview](https://docs.unity3d.com/Manual/UIB-interface-overview.html)" width="100%" >}}
 
 
-🔷 전체를 담을 Container
+🔷 전체를 담을 Container 준비
 
 ② Hierarchy 패널의 `MainMenu.uxml` 에다가 ③ Library 패널의 `VisualElement` 를 하나 끌어다 놓자.  
 더블 클릭해서 이름을 지정할 수 있는데, 적당히 `Container` 라고 해 두자.
