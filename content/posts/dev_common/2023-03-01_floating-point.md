@@ -169,14 +169,14 @@ offset bits 에 할당된 영역이 2비트 라면...
 🔷 offset bits
 
 offset bits 에 할당된 영역이 23비트...
-- 눈금수: $2^{23} = {\textcolor{orange}{8388008}}$
+- 눈금수: $2^{23} = {\textcolor{orange}{8388608}}$
 
 | 값            | 계산                                                                                                  |
 | ------------- | ----------------------------------------------------------------------------------------------------- |
-| 2             | $\Large 2^{\textcolor{magenta}{1}} + (\frac{0}{\textcolor{orange}{8388008}} \times \textcolor{red}{2})$ |
-| 2.00000023842 | $\Large 2^{\textcolor{magenta}{1}} + (\frac{1}{\textcolor{orange}{8388008}} \times \textcolor{red}{2})$ |
-| 2.00000047684 | $\Large 2^{\textcolor{magenta}{1}} + (\frac{3}{\textcolor{orange}{8388008}} \times \textcolor{red}{2})$ |
-| 2.00000071526 | $\Large 2^{\textcolor{magenta}{1}} + (\frac{4}{\textcolor{orange}{8388008}} \times \textcolor{red}{2})$ | 
+| 2             | $\Large 2^{\textcolor{magenta}{1}} + (\frac{0}{\textcolor{orange}{8388608}} \times \textcolor{red}{2})$ |
+| 2.00000023842 | $\Large 2^{\textcolor{magenta}{1}} + (\frac{1}{\textcolor{orange}{8388608}} \times \textcolor{red}{2})$ |
+| 2.00000047684 | $\Large 2^{\textcolor{magenta}{1}} + (\frac{3}{\textcolor{orange}{8388608}} \times \textcolor{red}{2})$ |
+| 2.00000071526 | $\Large 2^{\textcolor{magenta}{1}} + (\frac{4}{\textcolor{orange}{8388608}} \times \textcolor{red}{2})$ | 
 | ...           | ...                                                                                                   |
 
 
