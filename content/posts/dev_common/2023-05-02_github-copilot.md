@@ -1,9 +1,10 @@
 ---
-title: "GitHub Copilot 체험 (feat. PyCharm)"
+title: "GitHub Copilot 맛보기 (feat. PyCharm)"
 date: 2023-05-02T23:00:00+09:00
 categories: [ 개발 일반 ]
 tags:
 - copilot
+- jetbrains
 ---
 
 AI가 코드 작성을 도와준단다. 한 달 무료라니까 일단 써 보자.
