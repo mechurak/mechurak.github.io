@@ -1,4 +1,4 @@
-# GitHub Copilot 체험 (feat. PyCharm)
+# GitHub Copilot 맛보기 (feat. PyCharm)
 
 
 AI가 코드 작성을 도와준단다. 한 달 무료라니까 일단 써 보자.
