@@ -5,6 +5,7 @@ categories: [ 개발 일반 ]
 tags:
 - code_whisperer
 - jetbrains
+- for_free
 ---
 
 AI가 코드 작성을 도와준단다. GitHub Copilot은 돈 내야 하는데 요건 개인 개발자는 무료란다. 그럼 써야지!
