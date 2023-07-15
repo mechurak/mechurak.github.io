@@ -11,7 +11,8 @@
 {{< admonition >}}
 - Windows 의 경우에는 [git for windows](https://gitforwindows.org/) 에 `git-lfs`도 포함되어 있음
 - `git clone` 할 때 특별한 오류 없으면, 잘 설치되어 있는 것
-- `git
+- `git lfs track *.fbx` 이런 느낌으로 lfs로 관리할 확장자 지정
+- `.gitattributes` 파일로 관리됨
 {{< /admonition >}}
 
 <br/>
