@@ -1,6 +1,6 @@
 ---
 title: "Unity에서 Random - Random.value, Random.Range()"
-date: 2023-07-15T07:30:00+09:00
+date: 2023-07-15T08:30:00+09:00
 categories: [ Unity ]
 tags:
 - unity
