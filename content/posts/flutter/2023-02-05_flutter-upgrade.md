@@ -57,7 +57,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 ```
 <br/>
 
-필자의 경우, `stable` 채널을 쓰고 있었고, Flutter 3.3.9 버전을 사용하고 있었다.  
+나의 경우, `stable` 채널을 쓰고 있었고, Flutter 3.3.9 버전을 사용하고 있었다.  
 3.7이 나왔다고 하고, 특별히 안 올릴 이유가 없으니, 사용 Flutter 버전을 올리기로 했다.
 
 혹, `stable` 채널이 아니라, `beta` 채널을 사용 중이면, `flutter channel stable` 명령으로 채널을 변경할 수 있다.
@@ -104,7 +104,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 ## 작업 중인 프로젝트 pug get
 Flutter 업그레이드 후, 작업 중인 프로젝트를 빌드 하는데 `pug get` 에서 반응이 없었다.  
-괜히 빨리 업그레이드 했나 후회하고 있었는데, 알고보니 첫 빌드가 그냥 오래 걸린 것이었다. (필자의 경우는 한 3분 정도 걸렸던 것 같다.)
+괜히 빨리 업그레이드 했나 후회하고 있었는데, 알고보니 첫 빌드가 그냥 오래 걸린 것이었다. (한 3분 정도는 걸렸던 것 같다.)
 
 자세한 로그를 출력하면서 진행하도록 `flutter -v pug get` 을 한 번 해주도록 하자.
 

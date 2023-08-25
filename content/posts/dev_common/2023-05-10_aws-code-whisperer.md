@@ -54,8 +54,8 @@ PyCharm에 AWS Toolkit 플러그인을 설치해보자.
 PyCharm 기준으로, 아래 메뉴에서 설치하면 된다.
 - File > Settings
 - Plugins > "Marketplace" 탭
-- "Copilot" 검색
-- "GitHub Copilot" 설치
+- "aws" 검색
+- "AWS Toolkit" 설치
 
 {{< image src="/images/dev_common/code_whisperer_1.png" caption="플러그인 설치" width="1071">}}
 
