@@ -4,7 +4,7 @@
 DataFrame의 열 혹은 행에 특정 함수를 적용하고 싶을때는 `apply()`를 사용한다.
 <!--more-->
 
-{{< figure src="/images/logo/ml.jpg" >}}
+{{< image src="/images/logo/pandas.svg" caption="pandas 로고" width=50% linked=false >}}
 
 
 ## 1. 핵심 요약

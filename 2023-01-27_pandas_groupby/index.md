@@ -4,7 +4,7 @@
 DataFrame을 특정 열의 값들 기준으로 그룹화 해서 살펴보는 경우가 많다. `groupby()`를 알아보자.
 <!--more-->
 
-{{< figure src="/images/logo/ml.jpg" >}}
+{{< image src="/images/logo/pandas.svg" caption="pandas 로고" width=50% linked=false >}}
 
 ## 1. 기본 사용법
 1개의 열을 기준으로 그룹화

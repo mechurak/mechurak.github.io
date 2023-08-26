@@ -4,7 +4,7 @@
 특정 조건에 해당하는 행들만 필터링 하는 것을 `boolean indexing` 이라고 한다. `isin()` 메소드도 유용하다.
 <!--more-->
 
-{{< figure src="/images/logo/ml.jpg" >}}
+{{< image src="/images/logo/pandas.svg" caption="pandas 로고" width=50% linked=false >}}
 
 ## 1. boolean indexing
 아래 노트북처럼 각 행을 `True`, `False` 로 판단하는 `mask`를 준비하고, `df.loc()` 로 해당 행들만 필터링한다.
