@@ -1,16 +1,15 @@
 ---
 title: "Pandas DataFrame 합치기 - concat()과 merge()"
 date: 2023-01-26T23:30:00+09:00
-categories: [ Machine Learning ]
+categories: [ pandas ]
 tags:
-- python
 - pandas
 ---
 
 두 DataFrame을 위아래로 합칠때는 `pd.concat()`, 특정 열을 기준으로 join 할 때는 `pd.merge()`를 사용하자.
 <!--more-->
 
-{{< figure src="/images/logo/ml.jpg" >}}
+{{< image src="/images/logo/pandas.svg" caption="pandas 로고" width=50% linked=false >}}
 
 ## pd.concat()
 여러 소스를 통해 얻은(ex. 다른 csv 파일) 데이터 프레임들을 위아래로 합치고 싶은 상황이다. 아래 코드로 합칠 수 있다.

@@ -1,16 +1,15 @@
 ---
 title: "Pandas Dataframe 구조 변경 - unstack()"
 date: 2023-02-25T14:30:00+09:00
-categories: [ Machine Learning ]
+categories: [ pandas ]
 tags:
-- python
 - pandas
 ---
 
 `unstack()` 으로 DataFrame을 조작하기 편한 모양으로 바꿀 수 있다.
 <!--more-->
 
-{{< figure src="/images/logo/ml.jpg" >}}
+{{< image src="/images/logo/pandas.svg" caption="pandas 로고" width=50% linked=false >}}
 
 ## 1. 핵심 요약
 - `unstack()` 을 이용해서 DataFrame의 모양을 다루기 쉽게 바꿀 수 있다.

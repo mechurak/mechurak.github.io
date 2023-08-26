@@ -10,7 +10,7 @@ theme = "DoIt"
 
 [params]
   #  DoIt theme version
-  version = "0.2.X"
+  version = "0.4.X"
   # website title
   title = "일편단씸의 블로그"
   # site description
