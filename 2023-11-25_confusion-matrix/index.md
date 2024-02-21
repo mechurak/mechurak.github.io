@@ -25,10 +25,11 @@ y_pred = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
 cf_matrix = confusion_matrix(y_true, y_pred)
 
 # annotation 준비
-group_names = ["TN", "FP (type  II error)", "FN (type I error)", "TP"]
+group_names = ["TN", "FP (type 1 error)", "FN (type 2 error)", "TP"]
 group_counts = [value for value in cf_matrix.flatten()]
 group_percentages = [f"{value:.1%}" for value in cf_matrix.flatten()/np.sum(cf_matrix)]
 labels = [f"{v1}\n{v2}\n({v3})" for v1, v2, v3 in zip(group_names,group_counts,group_percentages)]
+labels = np.asarray(labels).reshape(2,2)
 
 # 시각화
 sns.heatmap(cf_matrix, annot=labels, fmt='', cmap='Blues')
@@ -105,7 +106,7 @@ group_percentages
 
 
 ```python
-group_names = ["TN", "FP (type  II error)", "FN (type I error)", "TP"]
+group_names = ["TN", "FP (type 1 error)", "FN (type 2 error)", "TP"]
 group_counts = [value for value in cf_matrix.flatten()]
 group_percentages = [f"{value:.1%}" for value in cf_matrix.flatten()/np.sum(cf_matrix)]
 labels = [f"{v1}\n{v2}\n({v3})" for v1, v2, v3 in zip(group_names,group_counts,group_percentages)]
@@ -114,8 +115,8 @@ labels = np.asarray(labels).reshape(2,2)
 labels
 ```
 
-    array([['TN\n1\n(10.0%)', 'FP (type  II error)\n2\n(20.0%)'],
-           ['FN (type I error)\n3\n(30.0%)', 'TP\n4\n(40.0%)']], dtype='<U29')
+    array([['TN\n1\n(10.0%)', 'FP (type 1 error)\n2\n(20.0%)'],
+           ['FN (type 2 error)\n3\n(30.0%)', 'TP\n4\n(40.0%)']], dtype='<U27')
 
 실제 채울 값을 요렇게 준비했다.
 
@@ -147,14 +148,13 @@ plt.ylabel('True Label')
 <br/>
 
 헷갈리니까 요것도 위에서 봤던 confusion matrix에 맞춰서 이해하도록 하자.  
-축 방향이 바뀌었다.
+아래의 confution matrix와 비교하면 대각 행렬이라고 보면 된다.
+- 실제상황(x축)에서 "H0가 허위"(귀무가설이 틀림, 대립가설이 맞음)가 True Label 1을 의미한다.
+- "H0가 사실" (귀무가설이 맞음, 대립가설이 틀림)이 True Label 0 을 의미한다.
+- 통계적 결정(y축)에서 "H0 기각"(대립가설 채택)이 True 를 예측했음을 의미한다. (Predict 에서 1)
+- "H0 채택"(대립가설 채택하지 않음)이 False를 예측했음을 의미한다. (Predict 에서 0)
 
 {{< figure src="/images/ml/confusion_matrix_2.png" >}}
-
-- H0(귀무가설) 기준으로 생각한다.
-- True Label 에서 `1`이 귀무가설이 참인 경우임
-- 내 예측은 귀무가설을 뭐라고 판단했는지이다.
-  - 귀무 가설이 맞다고 판단 했으면 `1`
 
 <br/>
 
